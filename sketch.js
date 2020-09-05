@@ -8,6 +8,7 @@ var fakeSprite;
 var fakeSprite2,fakeSprite3,fakeSprite4;
 var moving1;
 var moving2;
+var moving3;
 
 
 function preload(){
@@ -16,18 +17,19 @@ function preload(){
   ironman=loadImage("fhg.png");
   captainamerica=loadImage("hg.dms");
   thor=loadImage("huj.png");
-  moving1=loadAnimation("ing/ing 1.png","ing/ing 2.png","ing/ing 3.png","ing/ing 4.png","ing/ing 5.png","ing/ing 6.png","ing/ing 7.png","ing/ing 8.png","ing/ing 9.png","ing/ing 10.png"
-  ,"ing/ing 11.png","ing/ing 12.png","ing/ing 13.png","ing/ing 14.png","ing/ing 15.png","ing/ing 16.png")
-  moving2-loadAnimation("ibg/ibg 1.png","ibg/ibg 2.png")
-}
+  moving1=loadAnimation("ing/ing1.png","ing/ing2.png","ing/ing3.png")
+  moving2=loadAnimation("icg/icg1.png"," icg/icg2.png","icg/icg3.png")
+  moving3=loadAnimation("img/img1.png","img/img2.png","img/img3.png") }
 
 function setup() {
   canvas=createCanvas(displayWidth-100,displayHeight-200);
   spidey=createSprite(displayWidth/2-500,displayHeight/2-100);
   spidey.addImage("ghs",spiderman);
+  spidey.addAnimation("fgd",moving2)
   spidey.scale=0.2;
   irony=createSprite(displayWidth/2-500,displayHeight/2-310);
   irony.addImage("ghq",ironman);
+  irony.addAnimation("ghf",moving3)
   irony.scale=0.09;
   captainy=createSprite(displayWidth/2-320,displayHeight/2-100);
   captainy.addImage("ghw",captainamerica);
@@ -43,7 +45,6 @@ function setup() {
   
   
   spidey.setCollider("circle",0,0,10)
-  
   thory.setCollider("circle",0,0,10)
   captainy.setCollider("circle",0,0,10)
   irony.setCollider("circle",0,0,10)
@@ -79,6 +80,22 @@ function draw() {
 
  if(captainy.visible===true){
 captainy.changeAnimation("hst",moving1)
+
  }
+
+ if(keyDown("UP_ARROW")){
+   captainy.velocityY=-5;
+ }
+
+ captainy.velocityY=captainy.velocityY+0.5;
+
+ if(keyDown("RIGHT_ARROW")){
+   captainy.velocityX=5;
+ }
+
+ if(spidey.visible===true){
+  spidey.changeAnimation("fgd",moving2)
+
+   }
   drawSprites();
 }
