@@ -12,7 +12,10 @@ var movingcaptain;
 //var moving3;
 var movingc;
 var moving5;
+var moving6;
 var movingirony;
+var joker_ing,supery_ing;
+
 
 function preload(){
   bg=loadImage("avengers.jpg");
@@ -23,11 +26,13 @@ function preload(){
   movingcaptain=loadImage("c1.png")
   movingiron=loadImage("img1.png")
   moving1=loadAnimation("c1.png","c2.png","c3.png","c4.png","c5.png","c6.png","c7.png","c8.png","c9.png","c10.png","c11.png","c12.png","c13.png","c14.png","c15.png","c16.png")
-  //moving5=loadAnimation("ibg1.png","ibg2.png","ibg3.png","ibg4.png","ibg5.png","ibg6.png","ibg7.png","ibg8.png","ibg9.png","ibg10.png","ibg11.png","ibg13.png","ibg14.png","ibg15.png",
-  //"ibg16.png","ibg17.png","ibg18.png","ibg19.png","ibg20.png","ibg21.png","ibg22.png","ibg23.png","ibg24.png","ibg25.png","ibg26.png","ibg27.png","ibg28.png","ibg29.png","ibg30.png",
-  //"ibg31.png","ibg32.png","ibg33.png","ibg34.png")
-  moving3=loadAnimation("img1.png","img2.png","img3.png","img4.png","img5.png","img6.png","img7.png","img8.png","img9.png","img10.png","img11.png","img12.png","img13.png","img14.png","img15.png","img16.png","img17.png",
+  moving5=loadAnimation("ibg1.png","ibg2.png","ibg3.png","ibg4.png","ibg5.png","ibg6.png","ibg7.png","ibg8.png","ibg9.png","ibg11.png")
+  moving3=loadAnimation("img1.png","img2.png","img3.png","img4.png","img5.png","img6.png","img7.png","img8.png","img9.png","img10.png","img11.png","img12.png","img13.png","img14.png","img15.png","img16.png",
   "img18.png","img19.png")
+  moving6=loadAnimation("jk1.png","jk2.png","jk3.png","jk4.png","jk5.png","jk6.png","jk9.png","jk10.png","jk11.png");
+  baty_ing=loadImage("batya.png");
+  joker_ing=loadImage("jokery.png");
+  supery_ing=loadImage("supermany.png");
   
 }
 function setup() {
@@ -44,7 +49,7 @@ function setup() {
   captainy=createSprite(displayWidth/2-320,displayHeight/2-100,400,400);
   captainy.addImage("ghw",captainamerica);
   captainy.addImage("c",movingcaptain);
-  captainy.scale=0.05;
+  captainy.scale=0.3;
   thory=createSprite(displayWidth/2-320,displayHeight/2-310);
   thory.addImage("ghe",thor);
   thory.scale=0.2;
@@ -52,7 +57,7 @@ function setup() {
   fakeSprite2=createSprite(displayWidth/2-500,displayHeight/2-310);
   fakeSprite3=createSprite(displayWidth/2-320,displayHeight/2-100,400,400)
 movingc=createSprite(displayWidth/2-200,height-100,50,50)
-movingc.scale=1.5;
+movingc.scale=5;
 movingc.addAnimation("h",moving1)
 movingc.visible=false;
 
@@ -93,12 +98,14 @@ function draw() {
     spidey.visible=false;
     thory.visible=false;
     movingc.visible=true
+    captainy.visible=false;
   }
-  fakeSprite3.visible=true;
+  fakeSprite3.visible=false;
+  
   
 
   if(keyDown("space")){
-    captainy.changeImage("c",movingcaptain)
+    captainy.changeImage("c",movingcaptain);
   }
  
   if(keyDown("space")){
@@ -133,5 +140,49 @@ function draw() {
   spidey.changeAnimation("fgd",moving2)
 
    }*/
+
+   spawnEnemy1();
+   spawnEnemy2a();
+   spawnEnemy3();
+   
+
   drawSprites();
   }
+
+  function spawnEnemy1(){
+    if(World.frameCount%100===0){
+      var rand=Math.round(random(100,displayHeight-300))
+    var enemy1=createSprite(displayWidth,rand,20,20)
+    enemy1.velocityX=-5
+    
+    enemy1.scale=0.5;
+   
+    enemy1.addAnimation("fgr",moving5,)
+
+
+    }
+    
+  function spawnEnemy2a(){
+    if(World.frameCount%100===0){
+      var rand=Math.round(random(displayWidth+100,0))
+      var enemy2=createSprite(rand,0,20,20)
+      enemy2.velocityY=2;
+      enemy2.addAnimation("fzr",baty_ing)
+      enemy2.addAnimation("zsx",joker_ing)
+      enemy2.addAnimation("bcd",supery_ing)
+  }
+  }
+}
+function spawnEnemy3(){
+  if(World.frameCount%100===0){
+    var rand=Math.round(random(100,displayHeight-300))
+  var enemy1=createSprite(displayWidth,rand,20,20)
+  enemy1.velocityX=-5
+  
+  enemy1.scale=0.5;
+ 
+  enemy1.addAnimation("fxr",moving6)
+
+
+  }
+}
